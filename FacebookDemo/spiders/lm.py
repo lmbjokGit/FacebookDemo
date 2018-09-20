@@ -17,6 +17,12 @@ class lmSpider(Spider):
 
 
     def parse(self, response):   #网页数据分析
+        _names = (response._url).split("/")     #数据存盘
+        if len(_names[-1]) < 3:
+            _fn = _names[-2]
+        else:
+            _fn = _names[-1]
+
 
         item = ProductItem()
         self.seq=int(time.time())
@@ -24,6 +30,7 @@ class lmSpider(Spider):
         sitelooks = response.xpath('//div[@id="pages_side_column"]').re_first(r'([0-9,]+) 位用户关注了') #re规则取得关注用户数
         item['sitelikes'] = sitelikes.replace(",", "")
         item['sitelooks'] = sitelooks.replace(",", "")
+        item['sitename'] = '\''+_fn+'\''
         item['seq'] = self.seq
         item['likes']=''
         yield item

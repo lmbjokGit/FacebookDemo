@@ -104,4 +104,4 @@ MYDB='python'
 MYPORT='3306'
 
 HTTPERROR_ALLOWED_CODES = [504]
-FACEBOOKSITES = [['http://www.facebook.com/hankyuevent/', 15], ] #  ['http://www.facebook.com/HankyuHanshinHD/', 14]]
+FACEBOOKSITES = [['http://www.facebook.com/hankyuevent/', 15],   ['http://www.facebook.com/HankyuHanshinHD/', 5]]

@@ -42,15 +42,16 @@ function main(splash)
     splash:wait(3)
     
     while (i < loop) do
+        
+        -- need to judge and handle error 504, the following judgement method is not correct
         --local ok2, reason2 = pcall(splash:runjs([[window.scrollTo(0, document.body.scrollHeight)]])) 
         --local ok2, reason2 = splash:runjs([[window.scrollTo(0, document.body.scrollHeight)]])
         ok2 = assert(splash:runjs([[window.scrollTo(0, document.body.scrollHeight)]]))
-        --print("*****",response.status(),"******")
+        splash:wait(math.random(1,2))       
         if not ok2 then
             --print(reason2)
             break
         else
-            splash:wait(math.random(1,2))
             htmlsave=splash:html()
             i = i+1
             print("======= url= ",url, " ===== iii=",i," ========")
@@ -123,8 +124,9 @@ class facebookSpider(Spider):
         sitelooks = response.xpath('//div[@id="pages_side_column"]').re_first(r'([0-9,]+) 位用户关注了')
         item['sitelikes'] = sitelikes.replace(",", "")
         item['sitelooks'] = sitelooks.replace(",", "")
+        item['sitename'] = '\''+_fn+'\''
         item['seq'] = self.seq
-        item['likes']=''
+        item['likes'] = ''
         yield item
 
         articles = response.xpath('//div[@role="article"]')
@@ -143,7 +145,7 @@ class facebookSpider(Spider):
                 item['like2'] = likes[1]
                 item['likes'] = int(likes[0]) + int(likes[1])
                 item['seq'] = self.seq
-                item['sitelikes']=''
+                item['sitelikes'] = ''
                 yield item
 
     def error_parse(self, response):

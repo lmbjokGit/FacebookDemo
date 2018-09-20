@@ -59,7 +59,7 @@ class MysqlPipeline(object):
             pass
 
         if item['sitelikes'] != '':
-            sql='insert into  sites (`seq`, `likes`, `looks`) values (%s, %s, %s)' % (item['seq'], item['sitelikes'], item['sitelooks'])
+            sql='insert into  sites (`seq`, `likes`, `looks`, `sitename`) values (%s, %s, %s, %s)' % (item['seq'], item['sitelikes'], item['sitelooks'], item['sitename'])
         else:
             sql='insert into  articles (`seq`, `comment`, `like1`, `like2`, `likes`) values (%s, %s, %s, %s, %s)  ' % (item['seq'], item['comment'], item['like1'], item['like2'], item['likes'])
 

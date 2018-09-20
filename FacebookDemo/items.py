@@ -10,18 +10,11 @@ from scrapy import Item, Field
 
 
 class ProductItem(Item):
-    collection = 'products'
-    
-    image = Field()
-    price = Field()
-    deal = Field()
-    title = Field()
-    shop = Field()
-    location = Field()
     comment = Field()
     like1 = Field()
     like2 = Field()
     likes = Field()
+    sitename = Field()
     sitelikes = Field()
     sitelooks = Field()
     seq = Field()

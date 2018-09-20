@@ -18,8 +18,8 @@ Fighting UP， 我首先得找找网上有哪些轮子可以用（最好有同�
 
 ###爬虫程序
 互联网上的爬虫程序一大堆，现在最热门火爆的编程语言是python，用python编写的开源爬虫程序中也最多。<br>
-在Github上搜索"scrape"，以"most star"排名，第一名是scrapy（29.2k）。scrapy在网上的案例多，说明详细，入手较快，就选定他了。scrapy的Github网站：https://github.com/scrapy/scrapy； 说明文档：https://scrapy-chs.readthedocs.io/zh_CN/stable/index.html。<br>
-网页动态加载常用的有两种：selenium+phantomjs；splash+lua。我这次选择了splash。 splash的Github网站：https://github.com/scrapy-plugins/scrapy-splash；  中文说明文档：https://scrapy-chs.readthedocs.io/zh_CN/stable/index.html。
+在Github上搜索"scrape"，以"most star"排名，第一名是scrapy（29.2k）。scrapy在网上的案例多，说明详细，入手较快，就选定他了。scrapy的Github网站：https://github.com/scrapy/scrapy ； 说明文档：https://scrapy-chs.readthedocs.io/zh_CN/stable/index.html 。<br>
+网页动态加载常用的有两种：selenium+phantomjs；splash+lua。我这次选择了splash。 splash的Github网站：https://github.com/scrapy-plugins/scrapy-splash ；  中文说明文档：https://splash-cn-doc.readthedocs.io/zh_CN/latest/ 。
 
 ##程序说明及测试使用
 ###Demo程序整体思路是:
@@ -35,9 +35,8 @@ Fighting UP， 我首先得找找网上有哪些轮子可以用（最好有同�
 
  
 ##存在的问题
-1. lua爬取网页时报504错误。 splash官网的解释如https://splash-cn-doc.readthedocs.io/zh_CN/latest/faq.html#i-m-getting-lots-of-504-timeout-errors-please-help
-2. https://www.facebook.com/HankyuHanshinHD/ BootLoader加载还未搞定，需要时间研究。
-
+1. lua爬取网页时报504错误的处理。 splash官网的解释如https://splash-cn-doc.readthedocs.io/zh_CN/latest/faq.html#i-m-getting-lots-of-504-timeout-errors-please-help
+2. 如果下拉后facebook未及时返回，是否会漏掉数据？
 
 
 ##过程中感受及困难
