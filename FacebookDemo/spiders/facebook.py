@@ -54,7 +54,7 @@ function main(splash)
         else
             htmlsave=splash:html()
             i = i+1
-            print("======= url= ",url, " ===== iii=",i," ========")
+            print("======= url= ",url, " ===== i=",i," ========")
         end
         
     end
@@ -73,16 +73,15 @@ class facebookSpider(Spider):
     allowed_domains = ['www.facebook.com']
 
     url = 'http://www.facebook.com'
-    login_url = 'http://www.facebook.com/login.php'
-
     seq=0
 
     def start_requests(self):    #网页爬虫入口， 使用splash登录facebook，获得cookies
         user = "limeng@fsig.com.cn"
         password = "n3F-STQ-ZKJ-gdX"
+        login_url = 'http://www.facebook.com/login.php'
 
         yield SplashRequest(
-            url=self.login_url,
+            url=login_url,
             endpoint="execute",
             args={
                 "lua_source": lua_login_script,
@@ -92,7 +91,7 @@ class facebookSpider(Spider):
             callback=self.after_login,
         )
 
-    def after_login(self, response):     #登录facebook成功后， 调度生成（yield）多个网页的抓取任务
+    def after_login(self, response):     #登录facebook成功后， 调度生成（yield）多个网页的抓取任务。网页抓取后，交给parse函数处理（网页分析）
         for site in self.settings.get('FACEBOOKSITES'):
             site_url = site[0]
             site_looptimes = site[1]
@@ -107,7 +106,7 @@ class facebookSpider(Spider):
                 callback=self.parse,
             )
 
-    def parse(self, response):    #解析生成的网页数据
+    def parse(self, response):    #解析获取的网页数据
         _names = (response._url).split("/")     #数据存盘
         if len(_names[-1]) < 3:
             _fn = _names[-2]
