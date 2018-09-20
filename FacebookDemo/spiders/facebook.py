@@ -121,6 +121,9 @@ class facebookSpider(Spider):
         self.seq=int(time.time())
         sitelikes = response.xpath('//div[@id="pages_side_column"]').re_first(r'([0-9,]+) 位用户赞了')
         sitelooks = response.xpath('//div[@id="pages_side_column"]').re_first(r'([0-9,]+) 位用户关注了')
+        if sitelikes is None or sitelooks is None:
+            return
+
         item['sitelikes'] = sitelikes.replace(",", "")
         item['sitelooks'] = sitelooks.replace(",", "")
         item['sitename'] = '\''+_fn+'\''
