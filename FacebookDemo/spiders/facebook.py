@@ -76,7 +76,7 @@ class facebookSpider(Spider):
 
     seq=0
 
-    def start_requests(self):
+    def start_requests(self):    #网页爬虫入口， 使用splash登录facebook，获得cookies
         user = "limeng@fsig.com.cn"
         password = "n3F-STQ-ZKJ-gdX"
 
@@ -91,7 +91,7 @@ class facebookSpider(Spider):
             callback=self.after_login,
         )
 
-    def after_login(self, response):
+    def after_login(self, response):     #登录facebook成功后， 调度生成（yield）多个网页的分析程序
         for site in self.settings.get('FACEBOOKSITES'):
             site_url = site[0]
             site_looptimes = site[1]
@@ -106,8 +106,8 @@ class facebookSpider(Spider):
                 callback=self.parse,
             )
 
-    def parse(self, response):
-        _names = (response._url).split("/")
+    def parse(self, response):    #解析生成的网页数据
+        _names = (response._url).split("/")     #数据存盘
         if len(_names[-1]) < 3:
             _fn = _names[-2]
         else:

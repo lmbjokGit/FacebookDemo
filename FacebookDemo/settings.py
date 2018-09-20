@@ -97,7 +97,7 @@ SPLASH_URL = 'http://localhost:8050'
 DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
 HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
 
-MYHOST='192.168.200.203'
+MYHOST='127.0.0.1'
 MYUSER='python'
 MYPASSWORD='python'
 MYDB='python'

@@ -18,7 +18,7 @@ create table sites (id int(16) unsigned not null auto_increment, \
 
 create table articles (id int(16) unsigned not null auto_increment, \
 				seq int(32), \
-				comment varchar(20000), \
+				comment varchar(16000), \
 				like1 int(16), \
 				like2 int(16), \
 				likes int(16), \
@@ -27,14 +27,16 @@ create table articles (id int(16) unsigned not null auto_increment, \
 """
 
 import pymysql
+from  FacebookDemo import settings
 
 
 class MysqlPipeline(object):
     def __init__(self):
-        self.myhost="127.0.0.1"
-        self.myuser="python"
-        self.mypassword="python"
-        self.mydb="python"
+        self.myhost = settings.MYHOST
+        self.myuser = settings.MYUSER
+        self.mypassword = settings.MYPASSWORD
+        self.mydb = settings.MYDB
+        self.myport = settings.MYPORT
 
 
     def open_spider(self, spider):
@@ -42,6 +44,7 @@ class MysqlPipeline(object):
                                   user=self.myuser,
                                   password=self.mypassword,
                                   db=self.mydb,
+                                  #port=self.myport,
                                   charset='utf8mb4',
                                   cursorclass=pymysql.cursors.DictCursor)
 

@@ -12,23 +12,23 @@ class lmSpider(Spider):
     url = 'file:///fd.html'
     seq = 0
 
-    def start_requests(self):
+    def start_requests(self):    #网页爬虫入口
         yield Request(self.url, callback=self.parse)
 
 
-    def parse(self, response):
+    def parse(self, response):   #网页数据分析
 
         item = ProductItem()
         self.seq=int(time.time())
-        sitelikes = response.xpath('//div[@id="pages_side_column"]').re_first(r'([0-9,]+) 位用户赞了')
-        sitelooks = response.xpath('//div[@id="pages_side_column"]').re_first(r'([0-9,]+) 位用户关注了')
+        sitelikes = response.xpath('//div[@id="pages_side_column"]').re_first(r'([0-9,]+) 位用户赞了')   #re规则取得点赞用户数
+        sitelooks = response.xpath('//div[@id="pages_side_column"]').re_first(r'([0-9,]+) 位用户关注了') #re规则取得关注用户数
         item['sitelikes'] = sitelikes.replace(",", "")
         item['sitelooks'] = sitelooks.replace(",", "")
         item['seq'] = self.seq
         item['likes']=''
         yield item
 
-        articles = response.xpath('//div[@role="article"]')
+        articles = response.xpath('//div[@role="article"]')     #取得所有的article， 然后分析每一个article
         for article in articles:
             item = ProductItem()
             comment = '`'.join(article.xpath(
