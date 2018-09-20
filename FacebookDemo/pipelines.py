@@ -14,7 +14,7 @@ grant all on python.* to python@'%';
 flush privileges;
 use python
 create table sites (id int(16) unsigned not null auto_increment, \
-				seq int(32),likes int(16),looks int(16),primary key(id));
+				seq int(32),likes int(16),looks int(16),sitename varchar(200), primary key(id));
 
 create table articles (id int(16) unsigned not null auto_increment, \
 				seq int(32), \
