@@ -90,10 +90,7 @@ ITEM_PIPELINES = {
 # HTTPCACHE_IGNORE_HTTP_CODES = []
 # HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
-MAX_PAGE = 100
-
 SPLASH_URL = 'http://localhost:8050'
-
 DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
 HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
 
@@ -102,6 +99,10 @@ MYUSER='python'
 MYPASSWORD='python'
 MYDB='python'
 MYPORT='3306'
+
+FACEBOOK_LOGIN_USER=''
+FACEBOOK_LOGIN_PASSWORD=''
+FACEBOOK_LOGIN_URL='http://www.facebook.com/login.php'
 
 HTTPERROR_ALLOWED_CODES = [504]
 FACEBOOKSITES = [['http://www.facebook.com/hankyuevent/', 15],   ['http://www.facebook.com/HankyuHanshinHD/', 5]]
