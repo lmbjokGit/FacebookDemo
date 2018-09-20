@@ -29,8 +29,8 @@ Fighting UP， 我首先在网上找找有哪些轮子可以用（最好有同�
 4. 分析splash取得的网页，提取所需项，并保存到数据库中。
 
 ### （二）.测试使用
-1. 基础环境部署-包括python3，scrapy, splash,  mysql，pymysql。 具体参考对应的安装文档；
-2. 在mysql数据库中建立数据库、用户及表（建表及授权语句在pipelines.py文件中）， 修改pipelines.py中对应的参数；
+1. 基础环境部署-包括python3，scrapy, splash,  mysql，pymysql。 具体参考对应的安装文档。
+2. 在mysql数据库中建立数据库、用户及表（建表及授权语句在pipelines.py文件中）， 修改settings.py中对应的参数。
 3. 启动splash, 运行scrapy crawl lm 测试本地数据（先将fd.html文件拷贝到/fd.html)。 运行scrapy crawl facebook抓取网站数据。
 
  
