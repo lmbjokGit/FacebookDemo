@@ -92,7 +92,7 @@ class facebookSpider(Spider):
             callback=self.after_login,
         )
 
-    def after_login(self, response):     #登录facebook成功后， 调度生成（yield）多个网页的分析程序
+    def after_login(self, response):     #登录facebook成功后， 调度生成（yield）多个网页的抓取任务
         for site in self.settings.get('FACEBOOKSITES'):
             site_url = site[0]
             site_looptimes = site[1]
