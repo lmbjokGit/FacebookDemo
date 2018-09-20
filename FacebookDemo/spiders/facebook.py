@@ -76,9 +76,9 @@ class facebookSpider(Spider):
     seq=0
 
     def start_requests(self):    #网页爬虫入口， 使用splash登录facebook，获得cookies
-        user = "limeng@fsig.com.cn"
-        password = "n3F-STQ-ZKJ-gdX"
-        login_url = 'http://www.facebook.com/login.php'
+        user = self.settings.get('FACEBOOK_LOGIN_USER')
+        password = self.settings.get('FACEBOOK_LOGIN_PASSWORD')
+        login_url = self.settings.get('FACEBOOK_LOGIN_URL')
 
         yield SplashRequest(
             url=login_url,
